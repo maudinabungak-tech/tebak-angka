@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Game SPLDV Tebak Angka</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    input {
+      padding: 8px;
+      margin: 5px;
+      width: 80px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background: #4CAF50;
+      color: white;
+      font-size: 16px;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🎮 Game SPLDV Tebak Angka</h2>
+    <p>Dalam sebuah parkir terdapat 12 kendaraan terdiri dari motor dan mobil.<br>
+    Jika jumlah rodanya ada 32, berapa banyak motor dan mobil?</p>
+
+    <label>Motor: </label>
+    <input type="number" id="motor" min="0"><br>
+    <label>Mobil: </label>
+    <input type="number" id="mobil" min="0"><br>
+    <button onclick="cekJawaban()">Cek Jawaban</button>
+
+    <div class="result" id="hasil"></div>
+  </div>
+
+  <script>
+    function cekJawaban() {
+      let motor = parseInt(document.getElementById("motor").value);
+      let mobil = parseInt(document.getElementById("mobil").value);
+
+      if (isNaN(motor) || isNaN(mobil)) {
+        document.getElementById("hasil").innerHTML = "❗ Masukkan angka dulu.";
+        return;
+      }
+
+      // SPLDV: motor + mobil = 12, 2*motor + 4*mobil = 32
+      if (motor + mobil === 12 && 2*motor + 4*mobil === 32) {
+        document.getElementById("hasil").innerHTML = "✅ Benar! Motor = 8, Mobil = 4.";
+      } else {
+        document.getElementById("hasil").innerHTML = "❌ Salah, coba lagi!";
+      }
+    }
+  </script>
+</body>
+</html>
